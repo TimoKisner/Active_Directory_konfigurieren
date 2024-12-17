@@ -1,1 +1,1 @@
-# Active Directory Konfigurieren
+# Active Directory - Installation und Konfiguration
