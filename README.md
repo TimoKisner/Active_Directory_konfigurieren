@@ -3,21 +3,37 @@
 </p>
 
 <h1>Active Directory - Installation und Konfiguration</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory-Infrastruktur innerhalb Virtueller Maschinen in Microsoft Azure.
+<br />
 
-<h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
+
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h2>Verwendete Technologien und Umgebungen</h2>
+
+- Microsoft Azure (Virtuelle Maschinen, Virtuelles Netzwerk)
+- Remotedesktopverbindungen 
 - Active Directory Domain Services
 - PowerShell
 
-<h2>Operating Systems Used </h2>
+
+
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h2>Verwendete Betriebssysteme</h2>
 
 - Windows Server 2022
-- Windows 10 (21H2)
+- Windows 10 Pro (22H2)
 
-<h2>High-Level Deployment and Configuration Steps</h2>
+
+
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h2>High-Level Übersicht der Schritte</h2>
 
 - Pre-Installation
   - 1
@@ -29,24 +45,19 @@ This tutorial outlines the implementation of on-premises Active Directory within
   - 1
   - 2
 
-<h1>NEW LOGICAL DEPARTMENT</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+
+
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h1>Installation und Konfiguration von Active Directory</h1>
 
 
 
-<h2>TOPIC</h2>
-
-<p>
-TEXT
-</p>
-<p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<br />
-
-
-
-<h2>TOPIC</h2>
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h2>Pre-Installation</h2>
 
 <p>
 TEXT
@@ -58,7 +69,25 @@ TEXT
 
 
 
-<h2>TOPIC</h2>
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h2>Installation Active Directory</h2>
+
+<p>
+TEXT
+</p>
+<p>
+<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br />
+
+
+
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<!-- NEW SECTION -->
+<h2>Konfiguration Active Directory</h2>
 
 <p>
 TEXT
