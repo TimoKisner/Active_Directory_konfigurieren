@@ -35,7 +35,7 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 <!-- NEW SECTION -->
 <h2>High-Level Übersicht der Schritte</h2>
 
-- Pre-Installation
+- Vorbereitungen
   - 1
   - 2
 - Installation Active Directory (AD)
@@ -57,7 +57,7 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
-<h2>Pre-Installation</h2>
+<h2>Vorbereitungen</h2>
 
 <p>
 TEXT
