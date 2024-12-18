@@ -51,14 +51,9 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
-<h1>Installation und Konfiguration von Active Directory</h1>
-
-
-
-<!-- NEW SECTION -->
-<!-- NEW SECTION -->
-<!-- NEW SECTION -->
-<h2>Vorbereitungen</h2>
+<h1>Vorbereitungen</h1>
+<!-- XXX -->
+<h2>Umgebung erstellen</h2>
 
 <p>
 Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuerst eine Ressourcengruppe und ein Virtuelles Netzwerk in der Azure-Cloud. Achte Hierbei darauf, das virtuelle Netzwerk der von uns erstellten Ressourcengruppe zuzuordnen. Darüber hinaus sollen beide der sich innerhalb der selben Region befinden (die, die Ihnen am nächsten liegt). Für mich sieht es wie folgt aus: mein virtuelles Netzwerk "TestVnet" befindet sich in meiner Ressourcengruppe "RGroup". Beides in der Region "(Europe) Germany West Central".
@@ -66,6 +61,8 @@ Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuer
 <p>
 <img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+<!-- XXX -->
+<h2>Virtuelle Maschine "dc-1"</h2>
 
 <p>
 Im Verlaufe dieser Anleitung werden wir in Azure zwei virtuellen Maschinen erstellen. Die zweite wird aber erst im letzten Kapitel, der Einrichtung von Active Directory, erstellt. Um die erste kümmern wir uns jetzt. In dieser virtuellen Maschine mit dem Namen "dc-1" werden wir Active Directory installieren und verwalten. Das "dc" in "dc-1" steht für "Domain Controller", welcher dc-1 sein wird. Das ist ad und ein dc: jabsdfuasbuvbauh...............(). Achte beim Erstellen auf folgendes: die Ressourcengruppe muss unsere vorhin erstellte sein, sowie das virtuelle Netzwerk; die Region soll die muss die selbe sein; als Image wählen wir "Windows Server 2022 Datacenter"; für die Größe reicht eine Rechenleistung von 2vcpus (ich wähle 4 vcpus); Benutzername und Passwort stehen Ihnen frei; unten bei der Lizenzierung die Häckchen nicht vergessen. Der Rest kann unberührt bleiben.
@@ -100,10 +97,12 @@ Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
-<h2>Installation Active Directory</h2>
-<!-- Install AD -->
+<h1>Installation Active Directory</h1>
+<!-- XXX -->
+<h2>Istallation Active Directory Domain Servives</h2>
+
 <p>
-remote desktop into dc-1. öffne server manager (sollte sich automatisch öffnen bei log in). klick auf "Add roles and Features" :: auf "next"; "Installation Type" : "Role-based or feature-based installation" dann "next"; "Server Selection" wähle dc-1 dann "next"; "Server Roles" das häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" auf "next" ; "AD DS" auf "next"; "Confirmation" das häckchen oben setzen und "Install".             {{{promote to DC                     {{{relog into dc-1 with domain context
+remote desktop into dc-1. öffne server manager (sollte sich automatisch öffnen bei log in). klick auf "Add roles and Features" :: auf "next"; "Installation Type" : "Role-based or feature-based installation" dann "next"; "Server Selection" wähle dc-1 dann "next"; "Server Roles" das häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" auf "next" ; "AD DS" auf "next"; "Confirmation" das häckchen oben setzen und "Install". 
 </p>
 <p>
 <img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -133,15 +132,60 @@ Von nun an, wenn wir uns einloggen wollen in unsere Rechner (sowohl unser gerade
 <img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
+<!-- XXX -->
+<h2>Domain-Admin</h2>
 
-<hr>
-
-<!-- Create Admin_User -->
 <p>
-TEXT ghghghghghg
+Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unserer Domain. Genauer werden wir zunächst einen Benutzer mit Adminstartor-Berechtigungen über die Domain erstellen, kurz einen Domain-Admin. Öffnen tun wir eine Anwendung namens "Active Directory Users and Computers". Hier können wir genannte Instanzen erstellen. Zur besseren Übersicht erstellen wir eine "Organizational Unit" namens "_ADMINS". Eine "Organizational Unit" (OU) bezeichnet, für unsere Zwecke, nichts anderes als einen Ordner mit bestimmten Attributen. Der Name kann sein was auch immer Ihr Herz begehrt, da wir aber in diesem Ordner vor haben all unsere Admin-Benutzer zu verwalten, nenne ich ihn dementsprechend "_ADMINS" (das "_" dient zur Sortierung: ist wegen alphabetischer Anordnung der Ordner als erstes angezeigt). Rechtklicken Sie auf ihre Domain, dann auf "New" und dann auf "Organizational Units". 
 </p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Während wir schon dabei sind, erstellen wir zwei weitere OUs. Nämlich "_CLIENTS" und "_EMPLOYEES". Beide benutzen wir später im Verlauf der Einrichtung. Achte bei der OU "_EMPLOYEES" es genau so zu schreiben, da wir später mit einem script arbeiten, um uns mehrere zufällig generierte Benutzer zu erstellen (oder ändere das script, dass es auf den Namen deiner OU zutrifft). Fürs erste spielen diese zwei OUs aber keine Rolle. 
+</p>
+<p>
+<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Zurück zur Organizational Unit "_ADMINS". Innerhalb dieser erstellen wir einen "User". KLicke auf "_ADMINS", dann rechtklicke die Ansicht rechts und drücke "New", dann "User". Alle relevanten Informationen ausfüllen, den logon-Namen sich merken und auf "Next" drücken. Diesen verwenden wir zum einloggen in den Account. Es ist der Benutzername des Benutzer-Accounts, den wir eingeben in Remotedesktopverbindung. Das selbe gilt für das Passwort, welches Sie im Anschluss eingeben. !Achtung: lese dir die Checkboxen durch beim eingeben des Passwortes und setzen/entfernen sie Häckchen nach Ihrem Belieben. Da dies lediglich eine Anleitung ist und ich meine virtuelle Maschine lösche, habe ich folgende Häckchen gesetzt (s. Bild).
+</p>
+<p>
+Mein logon-Name/Benutzername dieses Admin Accounts lautet "admin_barack". 
+</p>
+<p>
+<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Zuletzt müssen wir "admin_barack" auch wirklich zum Admin machen, denn nur weil er sich in der von uns erstellten "_ADMINS" OU befindet, macht ihn das nicht automatisch zu einem Admin. Um das zu realisieren müssen wir ihn der Sicherheitsgruppe der Domain-Admins hinzufügen. Öffne "_ADMINS", rechtklicke auf Barack und drücke auf "Properties". Navigiere zu "Member Of", drücke "Add" und schreibe "Domain Admins" in die Box. Sicherheitshalber drücken Sie auf "Check Names" und erst dann auf "OK" (folge den Pfeilen auf dem Bild).
+</p>
+<p>
+<img src="8" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="9" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins angenommen wird, klicken auf "Apply" und dann auf "OK". Nun besitzt Barack die Berechtigungen eines Admins innerhalb der Domain uga.buga.
+</p>
+<p>
+<img src="10" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -150,10 +194,32 @@ TEXT ghghghghghg
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
-<h2>Einrichtung Active Directory</h2>
+<h1>Einrichtung Active Directory</h1>
+<!-- XXX -->
+<h2>Rechner zur Domain hinzufügen</h2>
 
 <p>
-TEXT
+TEXT hghghghghghg
+</p>
+<p>
+<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br />
+<!-- XXX -->
+<h2>Domain-Benutzerkontos</h2>
+
+<p>
+TEXT hghghghghghg
+</p>
+<p>
+<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br />
+<!-- XXX -->
+<h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
+
+<p>
+TEXT hghghghghghg
 </p>
 <p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
