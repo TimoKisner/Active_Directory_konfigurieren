@@ -246,12 +246,42 @@ Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit,
 <h2>Domain-Benutzerkontos</h2>
 
 <p>
-TEXT hghghghghghg
+Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Adminaccount erstellt haben. Hingegen des Adminaccounts erstellen wir unsere normalen, nicht-adminstrativen Benutzerkontos in der "_EMPLOYEES" Organizational Unit. Angesichts der Verwendung von Active Directory in der echtel Welt, sind diese Art von Benutzerkontos oft die der Mitarbeiter des Unternehmens, welche Besitz über die Domain hat. Dementsprechend ändern wir auch nichts an den Eigenschaten ("Properties") der Benutzerkonten innerhalb dieser Organizational Unit. Mein Beispiel eines nicht-admistrativen Benutzeraccounts taufe ich "hilli_billi". 
 </p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
+
+<p>
+Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnis und die Möglichkit für Experiemente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein script[LINK EMBEDDED, machen] in Powershell ISE laufen. Wichtig, öffne Powershell ISE in dc-1 als Adminstrator (rechtklick auf Powershell ISE und drücke auf "Run as adminstrator"). Powershell vs Powershell ISE: ndsajvbiahsfd..............(). Erstelle ein neues Fenster für das schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst.
+</p>
+<p>
+<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+
+Kopiere das Script und füge es ein. Bevor du auf das script ausführst empfehle ich dir bei Bedarf folgende Variablen am script zu ändern: Anzahl der zu generierenden Benutzer (der Standardwert beträgt 10.000!!); das Password der Benutzer (wird für alle gleich sein) und, falls du deine Organizational Unit für Mitarbeiter nicht "_EMPLOYEES" genannt hast, den Weg der Erstellung.
+</p>
+<p>
+<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe die Anzahl der Benutzerkonten auf 100 gesetzt und das Password beim Satndard-Password belassen. Im Anschluss überprüfen wir in Active Directory Users and Computers, ob die Benutzerkonten tatsächlich angelegt wurden. Schließe Powershell ISE und rücke vor zur nächsten Station.
+</p>
+<p>
+<img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 <!-- XXX -->
 <h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
 
