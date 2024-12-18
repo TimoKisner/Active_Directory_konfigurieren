@@ -75,7 +75,7 @@ Als Prävention für mögliche Missverständnisse in der Zukunft: mein Benutzern
 </p>
 
 <p>
-Vor dem Start der Installation von AD, wichtig die IP auf statisch zu setzen, damit sie sich nicht ändert und immer die selbe bleibt. Das machen wir weil: client-1 kontext kjdanvfabv....(). Und client-1 DNS == ip dc-1 machen wir weil: habsdhvbabdjsabfcvabsjvbasvbSV...........(). Folge den kommenden Bildern um dich durch die Einstellungen zu navigieren. Die vorgeschlagene IP gleicht der zuvor benutzen IP, also belassen wir es dabei und drücken auf "Speichern" um die Änderung zu Bestätigen. Nun müssten Sie in der Zeile mit dem blau markierten Text "ipconfig1" neben der IP-Addresse "(Statisch)" sehen.
+Vor dem Start der Installation von AD, wichtig die IP auf statisch zu setzen, damit sie sich nicht ändert und immer die selbe bleibt. Das machen wir weil: habsdhvbabdjsabfcvabsjvbasvbSV...........(). Folge den kommenden Bildern um dich durch die Einstellungen zu navigieren. Die vorgeschlagene IP gleicht der zuvor benutzen IP, also belassen wir es dabei und drücken auf "Speichern" um die Änderung zu Bestätigen. Nun müssten Sie in der Zeile mit dem blau markierten Text "ipconfig1" neben der IP-Addresse "(Statisch)" sehen.
 </p>
 <p>
 <img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -182,7 +182,7 @@ Zuletzt müssen wir "admin_barack" auch wirklich zum Admin machen, denn nur weil
 </p>
 
 <p>
-Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins angenommen wird, klicken auf "Apply" und dann auf "OK". Nun besitzt Barack die Berechtigungen eines Admins innerhalb der Domain uga.buga.
+Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins angenommen wird, klicken auf "Apply" und dann auf "OK". Nun besitzt Barack die Berechtigungen eines Admins innerhalb der Domain uga.buga. Logge dich neu ein als "[domain-name]\[admin_user]". Von nun an loggen wir uns in dc-1 nur noch mit unserem Adminkonto ein.
 </p>
 <p>
 <img src="10" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -199,10 +199,47 @@ Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins ange
 <h2>Rechner zur Domain hinzufügen</h2>
 
 <p>
-TEXT hghghghghghg
+Was benötigt man um einen Rechner, gedacht für Benutzer, einer Domain hinuzufügen? Richtig, einen Rechner! Wir erschaffen uns eine weitere Virtuelle Maschine in Azure, die, bezogen auf die Einstellungen (zugeordnete Ressourcengruppe, Virtuelles Netzwerk, etc.), gleichgesetzt ist mit dc-1. So befinden sie sich in der selben Umgebung. Der einzige Unterschied ist folgender: an der Stelle von Windows Server 2022 benutzen wir Windows 10 Pro als Image. Als Namen für die Virtuelle Maschine suggeriere ich "client-1". Falls Sie sich noch erinnern, haben wir eine Organizational Unit namens "_CLIENTS" angelegt, mit der Intention darin unsere Rechner innerhalb der Domain zu verwalten. Der Benutzername und das Passwort des Kontos steht Ihnen frei. Meiner lautet "original_user".
 </p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Eine andere Sache, die wir zuvor getan haben, war es die private-IP-Addresse von dc-1 auf statisch zu setzen, sodass diese sich nicht ändert. Warum wir das getan haben, habe ich bereits erläutert. Jetzt ändern wir die DNS-Einstellungen von unserer gerade erstellten Maschine "client-1" und lassen diese zum Domain Controller, dc-1, zeigen. Dastun wir(/müssen wir??). weil: jdbvchavsbhfvb...............(). Dafür navigieren wir zur selben Stelle in Azure wo wir auch die IP-Adresse von dc-1 auf statisch gesetzt haben. Diesmal klicken wir auf "DNS-Server", auf "Benutzerdefiniert", geben als DNS-Server die private-IP-Adresse von dc-1 ein und "Speichern".
+</p>
+<p>
+<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Abchließend starten wir die VM neu und betsätigen die Änderung des DNS-Einstellungen. Das Neustarten der Maschine wird in Azure erledigt. Zum Bestätigen des DNS-Servers loggen wir uns in client-1 ein und öffnen Powershell. Hier angekommen geben wir "ipconfig /all" ein und suchen nach "". Wenn rechts daneben die private-IP von dc-1 zu finden ist, dann ist alles nach Plan verlaufen.
+<p>
+<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzufügen, öffnen wir die Systemseinstellungen (rechtsklick auf Windowssymbol unten links und auf "System" drücken). Als nächstes auf "Rename this PC (advanced)", auf "Change..." und dann als "Member of" "Domain" anwählen und ihren Domainn-Namen eingeben (s. Bild). Die Rechner fragt als Reaktion nach einem Benutzer mit der Berechtigung diese Aktion auszuführen. Wir geben die Daten vom lieben Barack an (Ihrem Domain-Admin). Der Rechner fordert uns an ihn neu zu starten, damit die Änderungen in Effekt treten. Diesem Wunsch gehen wir nach.
+<p>
+<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br />
+
+<p>
+Zusammenfassend bestätigen wir noch die Aufnahme von client-1 in unsere Domain. Öffne Active Directory Users and Computers erneut und schaue unter dem Ordner Computers", ob du client-1 siehst. Ziehe client-1 in "_CLIENTS".
+</p>
+<p>
+<img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit, ein paar Benutzer unserer Domain hinzuzufügen.
 </p>
 <br />
 <!-- XXX -->
