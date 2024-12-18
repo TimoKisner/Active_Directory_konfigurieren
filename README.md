@@ -36,14 +36,15 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 <h2>High-Level Übersicht der Schritte</h2>
 
 - Vorbereitungen
-  - 1
-  - 2
+  - Umgebung erstellen (Ressourcengruppe, Virtuelles Netzwerk)
+  - Virtuelle Maschine "dc-1" erstellen
 - Installation Active Directory (AD)
-  - 1
-  - 2
-- Konfiguration AD
-  - 1
-  - 2
+  - Installation "Active Directory Domain Services" (AD DS)
+  - Domain-Admin erstellen
+- Einrichtung Active Directory
+  - Rechner (PCs) zur Domain hinzufügen
+  - Domain-Benutzerkontos erstellen
+  - Zugriff auf Rechner für nicht-adminstrative Domain-Benutzerkontos
 
 
 
@@ -67,7 +68,7 @@ Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuer
 </p>
 
 <p>
-Im Verlaufe dieser Anleitung werden wir in Azure zwei virtuellen Maschinen erstellen. Die zweite wird aber erst im letzten Kapitel "?(Konfig oder Einr?)" erstellt. Um die erste kümmern wir uns jetzt. In dieser virtuellen Maschine mit dem Namen "dc-1" werden wir Active Directory installieren und verwalten. Das "dc" in "dc-1" steht für "Domain Controller", welcher dc-1 sein wird. Das ist ad und ein dc: jabsdfuasbuvbauh...............(). Achte beim Erstellen auf folgendes: die Ressourcengruppe muss unsere vorhin erstellte sein, sowie das virtuelle Netzwerk; die Region soll die muss die selbe sein; als Image wählen wir "Windows Server 2022 Datacenter"; für die Größe reicht eine Rechenleistung von 2vcpus (ich wähle 4 vcpus); Benutzername und Passwort stehen Ihnen frei; unten bei der Lizenzierung die Häckchen nicht vergessen. Der Rest kann unberührt bleiben.
+Im Verlaufe dieser Anleitung werden wir in Azure zwei virtuellen Maschinen erstellen. Die zweite wird aber erst im letzten Kapitel, der Einrichtung von Active Directory, erstellt. Um die erste kümmern wir uns jetzt. In dieser virtuellen Maschine mit dem Namen "dc-1" werden wir Active Directory installieren und verwalten. Das "dc" in "dc-1" steht für "Domain Controller", welcher dc-1 sein wird. Das ist ad und ein dc: jabsdfuasbuvbauh...............(). Achte beim Erstellen auf folgendes: die Ressourcengruppe muss unsere vorhin erstellte sein, sowie das virtuelle Netzwerk; die Region soll die muss die selbe sein; als Image wählen wir "Windows Server 2022 Datacenter"; für die Größe reicht eine Rechenleistung von 2vcpus (ich wähle 4 vcpus); Benutzername und Passwort stehen Ihnen frei; unten bei der Lizenzierung die Häckchen nicht vergessen. Der Rest kann unberührt bleiben.
 </p>
 <p>
 Als Prävention für mögliche Missverständnisse in der Zukunft: mein Benutzername für den Account in meiner Virtuellen Maschine "dc-1" lautet "test_user".
@@ -149,7 +150,7 @@ TEXT ghghghghghg
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
 <!-- NEW SECTION -->
-<h2>Konfiguration Active Directory</h2>
+<h2>Einrichtung Active Directory</h2>
 
 <p>
 TEXT
