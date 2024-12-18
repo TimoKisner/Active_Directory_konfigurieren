@@ -45,6 +45,7 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
   - Rechner (PCs) zur Domain hinzufügen
   - Domain-Benutzerkontos erstellen
   - Zugriff auf Rechner für nicht-adminstrative Domain-Benutzerkontos
+  - Abschließende Worte
 
 
 
@@ -239,7 +240,6 @@ Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzuf
 <p>
 <img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<br />
 
 <p>
 Zusammenfassend bestätigen wir noch die Aufnahme von client-1 in unsere Domain. Öffne Active Directory Users and Computers erneut und schaue unter dem Ordner Computers", ob du client-1 siehst. Ziehe client-1 in "_CLIENTS".
@@ -266,7 +266,6 @@ Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Admina
 <p>
 <img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<br />
 
 <p>
 Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnis und die Möglichkit für Experiemente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein script[LINK EMBEDDED, machen] in Powershell ISE laufen. Wichtig, öffne Powershell ISE in dc-1 als Adminstrator (rechtklick auf Powershell ISE und drücke auf "Run as adminstrator"). Powershell vs Powershell ISE: ndsajvbiahsfd..............(). Erstelle ein neues Fenster für das schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst.
@@ -294,15 +293,34 @@ Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe d
 <p>
 <img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+<br/>
 <!-- XXX -->
 <!-- XXX -->
 <!-- XXX -->
 <h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
 
 <p>
-TEXT hghghghghghg
+Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Als ich es mit zufälligen Mitarbeiteraccount versucht habe ("fiko.fakuh"), erschien folgendes Error-Fenster (s. Bild).
 </p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Um unser Vorhaben möglich zu machen loggen wir uns zunächst mit unserem Adminaccount Barack in client-1 ein. In client-1 angekommen öffnen wir die Systemsteuerungen (rechtklick unten links auf das Windowssymbol und wähle "System" aus). Anschließend navigieren wir zu "Remote Desktop", klicken auf "Select users that can remotely access this PC", drücken auf "Add" und fügen unsere Benutzer hinzu. Anstatt einen einzelnen Benutzer einzugeben und diesen Prozess für jeden einzelnen Account zu wiederholen, schreiben wir "Domain Users" in die Box. Beim Erstellen von Usern in Active Directory Users and Computers werden diese automatisch als Mitglieder von "Domain Users" zugeordnet. Demzufolge sind all unsere Mitarbeiteraccounts Mitglied und alle erhalten Zugriff auf client-1.
+</p>
+<p>
+<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
+<!-- XXX -->
+<!-- XXX -->
+<!-- XXX -->
+<h2>Abschließende Worte</h2>
+
+<p>
+Zusammenfassend Infrastruktur gelegt: Software Installiert; Admin, Benutzer und Rechner erstellt/hinzugefügt. Weitere Mögliche Anlaufstellen für die einrichtung falls interesse besteht.
+</p>
