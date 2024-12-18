@@ -53,6 +53,8 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 <!-- NEW SECTION -->
 <h1>Vorbereitungen</h1>
 <!-- XXX -->
+<!-- XXX -->
+<!-- XXX -->
 <h2>Umgebung erstellen</h2>
 
 <p>
@@ -61,6 +63,8 @@ Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuer
 <p>
 <img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+<!-- XXX -->
+<!-- XXX -->
 <!-- XXX -->
 <h2>Virtuelle Maschine "dc-1"</h2>
 
@@ -99,6 +103,8 @@ Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv
 <!-- NEW SECTION -->
 <h1>Installation Active Directory</h1>
 <!-- XXX -->
+<!-- XXX -->
+<!-- XXX -->
 <h2>Istallation Active Directory Domain Servives</h2>
 
 <p>
@@ -132,6 +138,8 @@ Von nun an, wenn wir uns einloggen wollen in unsere Rechner (sowohl unser gerade
 <img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
+<!-- XXX -->
+<!-- XXX -->
 <!-- XXX -->
 <h2>Domain-Admin</h2>
 
@@ -196,6 +204,8 @@ Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins ange
 <!-- NEW SECTION -->
 <h1>Einrichtung Active Directory</h1>
 <!-- XXX -->
+<!-- XXX -->
+<!-- XXX -->
 <h2>Rechner zur Domain hinzufügen</h2>
 
 <p>
@@ -243,6 +253,8 @@ Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit,
 </p>
 <br />
 <!-- XXX -->
+<!-- XXX -->
+<!-- XXX -->
 <h2>Domain-Benutzerkontos</h2>
 
 <p>
@@ -282,6 +294,8 @@ Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe d
 <p>
 <img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+<!-- XXX -->
+<!-- XXX -->
 <!-- XXX -->
 <h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
 
