@@ -300,7 +300,7 @@ Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe d
 <h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
 
 <p>
-Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Als ich es mit zufälligen Mitarbeiteraccount versucht habe ("fiko.fakuh"), erschien folgendes Error-Fenster (s. Bild).
+Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Als ich es mit zufälligen Mitarbeiteraccount versucht habe ("fiko.fakuh"), erschien folgendes Error-Fenster (s. Bild). Client-1 bringt mithilfe des Domain Controllers in Erfahrung, dass der Benutzer "fiko.fakuh" durchaus existiert, aber er besitzt die genannte Genehmigung nicht.
 </p>
 <p>
 <img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
