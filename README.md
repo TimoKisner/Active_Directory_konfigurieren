@@ -110,7 +110,10 @@ Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv
 <h2>Istallation Active Directory Domain Servives</h2>
 
 <p>
-remote desktop into dc-1. öffne server manager (sollte sich automatisch öffnen bei log in). klick auf "Add roles and Features" :: auf "next"; "Installation Type" : "Role-based or feature-based installation" dann "next"; "Server Selection" wähle dc-1 dann "next"; "Server Roles" das häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" auf "next" ; "AD DS" auf "next"; "Confirmation" das häckchen oben setzen und "Install". gggggggggggggggggggggggggg
+Fortfahren tun wir innerhalb der virtuellen Maschine. Benutze Remotedesktopverbindungen um dich in dc-1 einzuloggen und, falls es nicht schon automatisch geschieht, öffne "Server Manager". Klicke auf "Add roles and features". Hier haben Sie eine Auflistung, worauf sie bei jedem der folgenden Einrichtungsfenster achten sollen:
+</p>
+<p>
+"Add roles and Features" :: auf "next"; "Installation Type" :: "Role-based or feature-based installation" dann "next"; "Server Selection" :: wähle dc-1 dann "next"; "Server Roles" :: das Häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" :: auf "next" ; "AD DS" :: auf "next"; "Confirmation" :: das Häckchen oben setzen und auf "Install".
 </p>
 <p>
 <img src="https://i.imgur.com/9v7xLxj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
