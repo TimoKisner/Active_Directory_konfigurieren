@@ -112,23 +112,23 @@ Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv
 remote desktop into dc-1. öffne server manager (sollte sich automatisch öffnen bei log in). klick auf "Add roles and Features" :: auf "next"; "Installation Type" : "Role-based or feature-based installation" dann "next"; "Server Selection" wähle dc-1 dann "next"; "Server Roles" das häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" auf "next" ; "AD DS" auf "next"; "Confirmation" das häckchen oben setzen und "Install". 
 </p>
 <p>
-<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/9v7xLxj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/qtV1s22.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DmEAzio.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Sobald die Installation abgeschlossen ist, drücken wir auf "close". Jetzt machen den Rechner, dc-1, zu einem tatsächlichen DC, Domain Controller. Hierzu müssen wir erneut in den Server Manager. Oben rechts befindet sich eine Fahne. Diese anklicken und auf "Promote this server to a domain controller" drücken. Anschließend öffnet sich ein Fenster zur Einrichtung der Domäne über die der Controller verwalten soll. Wir erschaffen eine komplett neue. Dafür fügen wir einen neuen "forest" hinzu. DAS ist ein forest: djfbajusbvjaufsd.........(). Er kann heißen wie Sie wünschen. Ich nenne meinen "uga.buga". Dieser "Root Domain name" ist nichts anderes als: jdabjvabfsdvba.......(). Anschließend müssen Sie ein ein Passwort eingeben zur Wiederherstellung der Domain (diesen werden wir nicht brauchen). Anschließend auf "next" drücken bis wir zum "Prerequisites Check"-Fenster kommen. Nachdem der Rechner erfolgreich geprüft wurde auf "Install" klicken. Im Anschluss der Installation wird Ihre Verbindung mit dem Rechner getrennt, weil dieser sich neu startet um die installierten Änderungen effektiv zu machen.
 </p>
 <p>
-<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/9qqRPJG.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/V7C6Ojp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -136,7 +136,7 @@ Sobald die Installation abgeschlossen ist, drücken wir auf "close". Jetzt mache
 Von nun an, wenn wir uns einloggen wollen in unsere Rechner (sowohl unser gerade erstellter Domain Controller als auch zukünftige Rechner, die wir der Domain hinzufügen), verwenden wir den Kontext der Domain beim einloggen. Anstatt in Remotedesktopverbindungen den einfachen Benutzernamen des Accounts mit dem wir uns einloggen wollen einzugeben, geben wir ihn im folgendem Format ein: "[domain]\Benutzername". In meinem Beispiel heißt meine Domain uge.buga und der Benutzername lautet test_user, also gebe ich "uga.buga\test_user" ein. Das Passwort ist das gleiche wie zuvor.
 </p>
 <p>
-<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/pRaXgY1.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 <!-- XXX -->
@@ -148,20 +148,20 @@ Von nun an, wenn wir uns einloggen wollen in unsere Rechner (sowohl unser gerade
 Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unserer Domain. Genauer werden wir zunächst einen Benutzer mit Adminstartor-Berechtigungen über die Domain erstellen, kurz einen Domain-Admin. Öffnen tun wir eine Anwendung namens "Active Directory Users and Computers". Hier können wir genannte Instanzen erstellen. Zur besseren Übersicht erstellen wir eine "Organizational Unit" namens "_ADMINS". Eine "Organizational Unit" (OU) bezeichnet, für unsere Zwecke, nichts anderes als einen Ordner mit bestimmten Attributen. Der Name kann sein was auch immer Ihr Herz begehrt, da wir aber in diesem Ordner vor haben all unsere Admin-Benutzer zu verwalten, nenne ich ihn dementsprechend "_ADMINS" (das "_" dient zur Sortierung: ist wegen alphabetischer Anordnung der Ordner als erstes angezeigt). Rechtklicken Sie auf ihre Domain, dann auf "New" und dann auf "Organizational Units". 
 </p>
 <p>
-<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/LztRXEj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Eovz7yl.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/gg74Qrx.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Während wir schon dabei sind, erstellen wir zwei weitere OUs. Nämlich "_CLIENTS" und "_EMPLOYEES". Beide benutzen wir später im Verlauf der Einrichtung. Achte bei der OU "_EMPLOYEES" es genau so zu schreiben, da wir später mit einem script arbeiten, um uns mehrere zufällig generierte Benutzer zu erstellen (oder ändere das script, dass es auf den Namen deiner OU zutrifft). Fürs erste spielen diese zwei OUs aber keine Rolle. 
 </p>
 <p>
-<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/1FMxHMj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
@@ -171,30 +171,30 @@ Zurück zur Organizational Unit "_ADMINS". Innerhalb dieser erstellen wir einen 
 Mein logon-Name/Benutzername dieses Admin Accounts lautet "admin_barack". 
 </p>
 <p>
-<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/BGJtWNf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/tBipgfr.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/FSoTmmr.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Zuletzt müssen wir "admin_barack" auch wirklich zum Admin machen, denn nur weil er sich in der von uns erstellten "_ADMINS" OU befindet, macht ihn das nicht automatisch zu einem Admin. Um das zu realisieren müssen wir ihn der Sicherheitsgruppe der Domain-Admins hinzufügen. Öffne "_ADMINS", rechtklicke auf Barack und drücke auf "Properties". Navigiere zu "Member Of", drücke "Add" und schreibe "Domain Admins" in die Box. Sicherheitshalber drücken Sie auf "Check Names" und erst dann auf "OK" (folge den Pfeilen auf dem Bild).
 </p>
 <p>
-<img src="8" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/2quI4fE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="9" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/iHkv2ol.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins angenommen wird, klicken auf "Apply" und dann auf "OK". Nun besitzt Barack die Berechtigungen eines Admins innerhalb der Domain uga.buga. Logge dich neu ein als "[domain-name]\[admin_user]". Von nun an loggen wir uns in dc-1 nur noch mit unserem Adminkonto ein.
 </p>
 <p>
-<img src="10" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/lKR1NCp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -213,39 +213,39 @@ Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins ange
 Was benötigt man um einen Rechner, gedacht für Benutzer, einer Domain hinuzufügen? Richtig, einen Rechner! Wir erschaffen uns eine weitere Virtuelle Maschine in Azure, die, bezogen auf die Einstellungen (zugeordnete Ressourcengruppe, Virtuelles Netzwerk, etc.), gleichgesetzt ist mit dc-1. So befinden sie sich in der selben Umgebung. Der einzige Unterschied ist folgender: an der Stelle von Windows Server 2022 benutzen wir Windows 10 Pro als Image. Als Namen für die Virtuelle Maschine suggeriere ich "client-1". Falls Sie sich noch erinnern, haben wir eine Organizational Unit namens "_CLIENTS" angelegt, mit der Intention darin unsere Rechner innerhalb der Domain zu verwalten. Der Benutzername und das Passwort des Kontos steht Ihnen frei. Meiner lautet "original_user".
 </p>
 <p>
-<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Tvzod6n.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/oSf01tD.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Eine andere Sache, die wir zuvor getan haben, war es die private-IP-Addresse von dc-1 auf statisch zu setzen, sodass diese sich nicht ändert. Warum wir das getan haben, habe ich bereits erläutert. Jetzt ändern wir die DNS-Einstellungen von unserer gerade erstellten Maschine "client-1" und lassen diese zum Domain Controller, dc-1, zeigen. Dastun wir(/müssen wir??). weil: jdbvchavsbhfvb...............(). Dafür navigieren wir zur selben Stelle in Azure wo wir auch die IP-Adresse von dc-1 auf statisch gesetzt haben. Diesmal klicken wir auf "DNS-Server", auf "Benutzerdefiniert", geben als DNS-Server die private-IP-Adresse von dc-1 ein und "Speichern".
 </p>
 <p>
-<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/huSDx7I.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Abchließend starten wir die VM neu und betsätigen die Änderung des DNS-Einstellungen. Das Neustarten der Maschine wird in Azure erledigt. Zum Bestätigen des DNS-Servers loggen wir uns in client-1 ein und öffnen Powershell. Hier angekommen geben wir "ipconfig /all" ein und suchen nach "". Wenn rechts daneben die private-IP von dc-1 zu finden ist, dann ist alles nach Plan verlaufen.
 <p>
-<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Ub5Lusb.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DoDettQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzufügen, öffnen wir die Systemseinstellungen (rechtsklick auf Windowssymbol unten links und auf "System" drücken). Als nächstes auf "Rename this PC (advanced)", auf "Change..." und dann als "Member of" "Domain" anwählen und ihren Domainn-Namen eingeben (s. Bild). Die Rechner fragt als Reaktion nach einem Benutzer mit der Berechtigung diese Aktion auszuführen. Wir geben die Daten vom lieben Barack an (Ihrem Domain-Admin). Der Rechner fordert uns an ihn neu zu starten, damit die Änderungen in Effekt treten. Diesem Wunsch gehen wir nach.
 <p>
-<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/wNeyzNV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Zusammenfassend bestätigen wir noch die Aufnahme von client-1 in unsere Domain. Öffne Active Directory Users and Computers erneut und schaue unter dem Ordner Computers", ob du client-1 siehst. Ziehe client-1 in "_CLIENTS".
 </p>
 <p>
-<img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/XESNonR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
@@ -261,37 +261,37 @@ Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit,
 Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Adminaccount erstellt haben. Hingegen des Adminaccounts erstellen wir unsere normalen, nicht-adminstrativen Benutzerkontos in der "_EMPLOYEES" Organizational Unit. Angesichts der Verwendung von Active Directory in der echtel Welt, sind diese Art von Benutzerkontos oft die der Mitarbeiter des Unternehmens, welche Besitz über die Domain hat. Dementsprechend ändern wir auch nichts an den Eigenschaten ("Properties") der Benutzerkonten innerhalb dieser Organizational Unit. Mein Beispiel eines nicht-admistrativen Benutzeraccounts taufe ich "hilli_billi". 
 </p>
 <p>
-<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/hv7U8aF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/MKMRJfw.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnis und die Möglichkit für Experiemente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein script[LINK EMBEDDED, machen] in Powershell ISE laufen. Wichtig, öffne Powershell ISE in dc-1 als Adminstrator (rechtklick auf Powershell ISE und drücke auf "Run as adminstrator"). Powershell vs Powershell ISE: ndsajvbiahsfd..............(). Erstelle ein neues Fenster für das schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst.
 </p>
 <p>
-<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/W2wobF9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Tfj3m2M.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 
 Kopiere das Script und füge es ein. Bevor du auf das script ausführst empfehle ich dir bei Bedarf folgende Variablen am script zu ändern: Anzahl der zu generierenden Benutzer (der Standardwert beträgt 10.000!!); das Password der Benutzer (wird für alle gleich sein) und, falls du deine Organizational Unit für Mitarbeiter nicht "_EMPLOYEES" genannt hast, den Weg der Erstellung.
 </p>
 <p>
-<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/TWBmtCA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/EC3AGNj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe die Anzahl der Benutzerkonten auf 100 gesetzt und das Password beim Satndard-Password belassen. Im Anschluss überprüfen wir in Active Directory Users and Computers, ob die Benutzerkonten tatsächlich angelegt wurden. Schließe Powershell ISE und rücke vor zur nächsten Station.
 </p>
 <p>
-<img src="7" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Mwaw5cV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br/>
 <!-- XXX -->
@@ -303,17 +303,17 @@ Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe d
 Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Als ich es mit zufälligen Mitarbeiteraccount versucht habe ("fiko.fakuh"), erschien folgendes Error-Fenster (s. Bild). Client-1 bringt mithilfe des Domain Controllers in Erfahrung, dass der Benutzer "fiko.fakuh" durchaus existiert, aber er besitzt die genannte Genehmigung nicht.
 </p>
 <p>
-<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/HeAtYGV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/1JX8Qtc.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Um unser Vorhaben möglich zu machen loggen wir uns zunächst mit unserem Adminaccount Barack in client-1 ein. In client-1 angekommen öffnen wir die Systemsteuerungen (rechtklick unten links auf das Windowssymbol und wähle "System" aus). Anschließend navigieren wir zu "Remote Desktop", klicken auf "Select users that can remotely access this PC", drücken auf "Add" und fügen unsere Benutzer hinzu. Anstatt einen einzelnen Benutzer einzugeben und diesen Prozess für jeden einzelnen Account zu wiederholen, schreiben wir "Domain Users" in die Box. Beim Erstellen von Usern in Active Directory Users and Computers werden diese automatisch als Mitglieder von "Domain Users" zugeordnet. Demzufolge sind all unsere Mitarbeiteraccounts Mitglied und alle erhalten Zugriff auf client-1.
 </p>
 <p>
-<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/X5v2q0G.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 <!-- XXX -->
