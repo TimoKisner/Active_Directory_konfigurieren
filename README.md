@@ -62,7 +62,7 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuerst eine Ressourcengruppe und ein Virtuelles Netzwerk in der Azure-Cloud. Achte Hierbei darauf, das virtuelle Netzwerk der von uns erstellten Ressourcengruppe zuzuordnen. Darüber hinaus sollen beide der sich innerhalb der selben Region befinden (die, die Ihnen am nächsten liegt). Für mich sieht es wie folgt aus: mein virtuelles Netzwerk "TestVnet" befindet sich in meiner Ressourcengruppe "RGroup". Beides in der Region "(Europe) Germany West Central".
 </p>
 <p>
-<img src="1" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/r5piKWD.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <!-- XXX -->
 <!-- XXX -->
@@ -76,24 +76,24 @@ Im Verlaufe dieser Anleitung werden wir in Azure zwei virtuellen Maschinen erste
 Als Prävention für mögliche Missverständnisse in der Zukunft: mein Benutzername für den Account in meiner Virtuellen Maschine "dc-1" lautet "test_user".
 </p>
 <p>
-<img src="2" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/mJEYLsi.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Vor dem Start der Installation von AD, wichtig die IP auf statisch zu setzen, damit sie sich nicht ändert und immer die selbe bleibt. Das machen wir weil: habsdhvbabdjsabfcvabsjvbasvbSV...........(). Folge den kommenden Bildern um dich durch die Einstellungen zu navigieren. Die vorgeschlagene IP gleicht der zuvor benutzen IP, also belassen wir es dabei und drücken auf "Speichern" um die Änderung zu Bestätigen. Nun müssten Sie in der Zeile mit dem blau markierten Text "ipconfig1" neben der IP-Addresse "(Statisch)" sehen.
 </p>
 <p>
-<img src="3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Ximghle.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-<img src="4" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/xucoVJ6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
 Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv zu machen.
 </p>
 <p>
-<img src="5" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/R1zBMaW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
