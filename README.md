@@ -260,7 +260,7 @@ Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit,
 <!-- XXX -->
 <!-- XXX -->
 <h2>Domain-Benutzerkontos</h2>
-gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+
 <p>
 Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Adminaccount erstellt haben. Hingegen des Adminaccounts erstellen wir unsere normalen, nicht-adminstrativen Benutzerkontos in der "_EMPLOYEES" Organizational Unit. Angesichts der Verwendung von Active Directory in der echtel Welt, sind diese Art von Benutzerkontos oft die der Mitarbeiter des Unternehmens, welche Besitz über die Domain hat. Dementsprechend ändern wir auch nichts an den Eigenschaten ("Properties") der Benutzerkonten innerhalb dieser Organizational Unit. Mein Beispiel eines nicht-admistrativen Benutzeraccounts taufe ich "hilli_billi". 
 </p>
@@ -272,7 +272,7 @@ Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Admina
 </p>
 
 <p>
-Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnis und die Möglichkit für Experiemente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein script[LINK EMBEDDED, machen] in Powershell ISE laufen. Wichtig, öffne Powershell ISE in dc-1 als Adminstrator (rechtklick auf Powershell ISE und drücke auf "Run as adminstrator"). Powershell vs Powershell ISE: ndsajvbiahsfd..............(). Erstelle ein neues Fenster für das schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst.
+Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnis und die Möglichkit für Experiemente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein script[LINK EMBEDDED, machen] in Powershell ISE laufen. Wichtig, öffne Powershell ISE in dc-1 als Adminstrator (rechtklick auf Powershell ISE und drücke auf "Run as adminstrator"). Der Unterschied zu Powershell? PowerShell ist eine Befehlszeilenumgebung und Skriptsprache, mit der Befehle direkt ausgeführt und Aufgaben automatisiert werden können. PowerShell ISE (Integrated Scripting Environment) hingegen ist eine grafische Benutzeroberfläche, die speziell für das Schreiben, Bearbeiten und Testen von PowerShell-Skripten entwickelt wurde, um komplexere Aufgaben einfacher umzusetzen. Erstelle ein neues Fenster für das schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst.
 </p>
 <p>
 <img src="https://i.imgur.com/W2wobF9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -304,8 +304,7 @@ Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe d
 <h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
 
 <p>
-Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Als ich es mit zufälligen Mitarbeiteraccount versucht habe ("fiko.fakuh"), erschien folgendes Error-Fenster (s. Bild). Client-1 bringt mithilfe des Domain Controllers in Erfahrung, dass der Benutzer "fiko.fakuh" durchaus existiert, aber er besitzt die genannte Genehmigung nicht.
-</p>
+Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Versucht man es mit einem zufälligen Mitarbeiteraccount ("fiko.fakuh"), erscheint folgendes Error-Fenster (s. Bild). Der Domain Controller bestätigt, dass ein Benutzerkonto namens "fiko.fakuh" existiert, Client-1 aber das genannte Vorhaben nicht genehmigt.
 <p>
 <img src="https://i.imgur.com/HeAtYGV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
