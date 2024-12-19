@@ -240,27 +240,27 @@ Abchließend starten wir die VM neu und bestätigen die Änderung des DNS-Einste
 </p>
 
 <p>
-Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzufügen, öffnen wir die Systemseinstellungen (rechtsklick auf Windowssymbol unten links und auf "System" drücken). Als nächstes auf "Rename this PC (advanced)", auf "Change..." und dann als "Member of" "Domain" anwählen und ihren Domainn-Namen eingeben (s. Bild). Die Rechner fragt als Reaktion nach einem Benutzer mit der Berechtigung diese Aktion auszuführen. Wir geben die Daten vom lieben Barack an (Ihrem Domain-Admin). Der Rechner fordert uns an ihn neu zu starten, damit die Änderungen in Effekt treten. Diesem Wunsch gehen wir nach. gggggggggggggggggggggggggggggggggggggggggggggggggggggg
+Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzufügen, öffnen wir die Systemseinstellungen (rechtsklick auf Windowssymbol unten links und auf "System" drücken). Als nächstes auf "Rename this PC (advanced)", auf "Change..." und dann bei "Member of" die Option "Domain" anwählen und ihren Domain-Namen eingeben (s. Bild). Der Rechner fragt als Reaktion nach einem Benutzer mit der Berechtigung diese Aktion auszuführen. Wir geben die Daten vom lieben Barack an (Ihrem Domain-Admin). Der Rechner fordert uns an ihn neu zu starten, damit die Änderungen in Effekt treten. Diesem Wunsch gehen wir nach.
 <p>
 <img src="https://i.imgur.com/wNeyzNV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
-Zusammenfassend bestätigen wir noch die Aufnahme von client-1 in unsere Domain. Öffne Active Directory Users and Computers erneut und schaue unter dem Ordner Computers", ob du client-1 siehst. Ziehe client-1 in "_CLIENTS".
+Zusammenfassend bestätigen wir noch die Aufnahme von client-1 in unsere Domain. Öffne Active Directory Users and Computers erneut und schaue unter dem Ordner "Computers", ob du client-1 siehst. Ziehe client-1 in "_CLIENTS".
 </p>
 <p>
 <img src="https://i.imgur.com/XESNonR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
-Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit, ein paar Benutzer unserer Domain hinzuzufügen.
+Et Voila! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit, ein paar Benutzer zu erstellen.
 </p>
 <br />
 <!-- XXX -->
 <!-- XXX -->
 <!-- XXX -->
 <h2>Domain-Benutzerkontos</h2>
-
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 <p>
 Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Adminaccount erstellt haben. Hingegen des Adminaccounts erstellen wir unsere normalen, nicht-adminstrativen Benutzerkontos in der "_EMPLOYEES" Organizational Unit. Angesichts der Verwendung von Active Directory in der echtel Welt, sind diese Art von Benutzerkontos oft die der Mitarbeiter des Unternehmens, welche Besitz über die Domain hat. Dementsprechend ändern wir auch nichts an den Eigenschaten ("Properties") der Benutzerkonten innerhalb dieser Organizational Unit. Mein Beispiel eines nicht-admistrativen Benutzeraccounts taufe ich "hilli_billi". 
 </p>
