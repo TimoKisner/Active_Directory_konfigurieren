@@ -16,6 +16,7 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 - Microsoft Azure (Virtuelle Maschinen, Virtuelles Netzwerk)
 - Remotedesktopverbindungen 
 - Active Directory Domain Services
+- Active Directory Users and Computers
 - PowerShell
 
 
@@ -59,7 +60,7 @@ Diese Anleitung dreht sich um die Implementierung einer lokalen Active Directory
 <h2>Umgebung erstellen</h2>
 
 <p>
-Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuerst eine Ressourcengruppe und ein Virtuelles Netzwerk in der Azure-Cloud. Achte Hierbei darauf, das virtuelle Netzwerk der von uns erstellten Ressourcengruppe zuzuordnen. Darüber hinaus sollen beide der sich innerhalb der selben Region befinden (die, die Ihnen am nächsten liegt). Für mich sieht es wie folgt aus: mein virtuelles Netzwerk "TestVnet" befindet sich in meiner Ressourcengruppe "RGroup". Beides in der Region "(Europe) Germany West Central".
+Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuerst eine Ressourcengruppe und ein Virtuelles Netzwerk in der Azure-Cloud. Achte Hierbei darauf, das virtuelle Netzwerk der von uns erstellten Ressourcengruppe zuzuordnen. Darüber hinaus sollen beide der sich innerhalb der selben Region befinden (die, die Ihnen am nächsten liegt). Bei mir sieht es wie folgt aus: mein virtuelles Netzwerk "TestVnet" befindet sich in meiner Ressourcengruppe "RGroup". Beides in der Region "(Europe) Germany West Central".
 </p>
 <p>
 <img src="https://i.imgur.com/r5piKWD.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -70,7 +71,7 @@ Zuerst erstellen wir die Umgebung für unser Projekt. Heißt, wir erstellen zuer
 <h2>Virtuelle Maschine "dc-1"</h2>
 
 <p>
-Im Verlaufe dieser Anleitung werden wir in Azure zwei virtuellen Maschinen erstellen. Die zweite wird aber erst im letzten Kapitel, der Einrichtung von Active Directory, erstellt. Um die erste kümmern wir uns jetzt. In dieser virtuellen Maschine mit dem Namen "dc-1" werden wir Active Directory installieren und verwalten. Das "dc" in "dc-1" steht für "Domain Controller", welcher dc-1 sein wird. Das ist ad und ein dc: jabsdfuasbuvbauh...............(). Achte beim Erstellen auf folgendes: die Ressourcengruppe muss unsere vorhin erstellte sein, sowie das virtuelle Netzwerk; die Region soll die muss die selbe sein; als Image wählen wir "Windows Server 2022 Datacenter"; für die Größe reicht eine Rechenleistung von 2vcpus (ich wähle 4 vcpus); Benutzername und Passwort stehen Ihnen frei; unten bei der Lizenzierung die Häckchen nicht vergessen. Der Rest kann unberührt bleiben.
+Im Verlaufe dieser Anleitung werden wir in Azure zwei virtuellen Maschinen erstellen. Die zweite wird aber erst im letzten Kapitel, der Einrichtung von Active Directory, erstellt. Um die erste kümmern wir uns jetzt. In dieser virtuellen Maschine mit dem Namen "dc-1" werden wir Active Directory installieren und verwalten. Das "dc" in "dc-1" steht für "Domain Controller", welcher dc-1 sein wird. Aber was ist ein Domain Controller? Was ist überhaupt Active Directory? Active Directory (AD) ist ein Verzeichnisdienst von Microsoft, der verwendet wird, um Netzwerke zentral zu verwalten, einschließlich Benutzern, Computern und Ressourcen wie Druckern. Ein Domain Controller (DC) ist ein Server, der Active Directory hostet und als zentrale Authentifizierungsinstanz für alle Benutzer und Geräte im Netzwerk dient. Mit einem Domain Controller können Administratoren Benutzerdaten, Berechtigungen und Sicherheitsrichtlinien zentral verwalten. Achte beim Erstellen auf folgendes: die Ressourcengruppe muss unsere vorhin erstellte sein, sowie das virtuelle Netzwerk; die Region soll die muss die selbe sein; als Image wählen wir "Windows Server 2022 Datacenter"; für die Größe reicht eine Rechenleistung von 2vcpus (ich wähle 4 vcpus); Benutzername und Passwort stehen Ihnen frei; unten bei der Lizenzierung die Häckchen nicht vergessen. Der Rest kann unberührt bleiben.
 </p>
 <p>
 Als Prävention für mögliche Missverständnisse in der Zukunft: mein Benutzername für den Account in meiner Virtuellen Maschine "dc-1" lautet "test_user".
@@ -80,7 +81,7 @@ Als Prävention für mögliche Missverständnisse in der Zukunft: mein Benutzern
 </p>
 
 <p>
-Vor dem Start der Installation von AD, wichtig die IP auf statisch zu setzen, damit sie sich nicht ändert und immer die selbe bleibt. Das machen wir weil: habsdhvbabdjsabfcvabsjvbasvbSV...........(). Folge den kommenden Bildern um dich durch die Einstellungen zu navigieren. Die vorgeschlagene IP gleicht der zuvor benutzen IP, also belassen wir es dabei und drücken auf "Speichern" um die Änderung zu Bestätigen. Nun müssten Sie in der Zeile mit dem blau markierten Text "ipconfig1" neben der IP-Addresse "(Statisch)" sehen.
+Vor dem Start der Installation von ADsetzen wir die private-IP-Addresse von dc-1 von dynamisch auf statisch, damit sie sich nicht ändert und immer die selbe bleibt. Das Setzen einer statischen privaten IP-Adresse für den Domain Controller ist notwendig, da er eine zentrale Rolle im Netzwerk spielt und von anderen Geräten über eine feste IP-Adresse erreichbar sein muss. Eine dynamische IP-Adresse könnte sich ändern, was dazu führen würde, dass Geräte den Domain Controller nicht mehr finden, wodurch Authentifizierungen und Netzwerkdienste gestört werden, bishin zu nicht mehr möglich sind. Folge den kommenden Bildern um dich durch die Einstellungen zu navigieren. Die vorgeschlagene IP gleicht der zuvor benutzen IP, also belassen wir es dabei und drücken auf "Speichern" um die Änderung zu Bestätigen. Nun müssten Sie in der Zeile mit dem blau markierten Text "ipconfig1" neben der IP-Addresse "(Statisch)" sehen.
 </p>
 <p>
 <img src="https://i.imgur.com/Ximghle.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -109,7 +110,7 @@ Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv
 <h2>Istallation Active Directory Domain Servives</h2>
 
 <p>
-remote desktop into dc-1. öffne server manager (sollte sich automatisch öffnen bei log in). klick auf "Add roles and Features" :: auf "next"; "Installation Type" : "Role-based or feature-based installation" dann "next"; "Server Selection" wähle dc-1 dann "next"; "Server Roles" das häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" auf "next" ; "AD DS" auf "next"; "Confirmation" das häckchen oben setzen und "Install". 
+remote desktop into dc-1. öffne server manager (sollte sich automatisch öffnen bei log in). klick auf "Add roles and Features" :: auf "next"; "Installation Type" : "Role-based or feature-based installation" dann "next"; "Server Selection" wähle dc-1 dann "next"; "Server Roles" das häckchen für "active directory domain services" klicken, auf "Add Features" drücken und "next"; "Features" auf "next" ; "AD DS" auf "next"; "Confirmation" das häckchen oben setzen und "Install". gggggggggggggggggggggggggg
 </p>
 <p>
 <img src="https://i.imgur.com/9v7xLxj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
