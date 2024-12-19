@@ -212,7 +212,7 @@ Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins ange
 <!-- XXX -->
 <!-- XXX -->
 <h2>Rechner zur Domain hinzufügen</h2>
-ggggggggggggggggg
+
 <p>
 Was benötigt man um einen Rechner, gedacht für Benutzer, einer Domain hinuzufügen? Richtig, einen Rechner! Wir erschaffen uns eine weitere Virtuelle Maschine in Azure, die, bezogen auf die Einstellungen (zugeordnete Ressourcengruppe, Virtuelles Netzwerk, etc.), gleichgesetzt ist mit dc-1. So befinden sie sich in der selben Umgebung. Der einzige Unterschied ist folgender: an der Stelle von Windows Server 2022 benutzen wir Windows 10 Pro als Image. Als Namen für die Virtuelle Maschine suggeriere ich "client-1". Falls Sie sich noch erinnern, haben wir eine Organizational Unit namens "_CLIENTS" angelegt, mit der Intention darin unsere Rechner innerhalb der Domain zu verwalten. Der Benutzername und das Passwort des Kontos steht Ihnen frei. Meiner lautet "original_user".
 </p>
@@ -224,14 +224,14 @@ Was benötigt man um einen Rechner, gedacht für Benutzer, einer Domain hinuzuf�
 </p>
 
 <p>
-Eine andere Sache, die wir zuvor getan haben, war es die private-IP-Addresse von dc-1 auf statisch zu setzen, sodass diese sich nicht ändert. Warum wir das getan haben, habe ich bereits erläutert. Jetzt ändern wir die DNS-Einstellungen von unserer gerade erstellten Maschine "client-1" und lassen diese zum Domain Controller, dc-1, zeigen. Dastun wir(/müssen wir??). weil: jdbvchavsbhfvb...............(). Dafür navigieren wir zur selben Stelle in Azure wo wir auch die IP-Adresse von dc-1 auf statisch gesetzt haben. Diesmal klicken wir auf "DNS-Server", auf "Benutzerdefiniert", geben als DNS-Server die private-IP-Adresse von dc-1 ein und "Speichern".
+Eine andere Sache, die wir zuvor getan haben, war es die private-IP-Addresse von dc-1 auf statisch zu setzen, sodass diese sich nicht ändert. Warum wir das getan haben, habe ich bereits erläutert. Jetzt ändern wir die DNS-Einstellungen von unserer gerade erstellten Maschine "client-1" und lassen diese zum Domain Controller, dc-1, zeigen. Indem wir die DNS-Einstellungen von client-1 auf die private IP-Adresse von dc-1 geändert haben, haben wir den Domain Controller als primären DNS-Server festgelegt. Dies ist notwendig, da der Domain Controller mit Active Directory auch DNS-Dienste bereitstellt, die für die Namensauflösung und das Finden von Domänenressourcen essenziell sind. Ohne diese Änderung könnte client-1 die Domain und den Domain Controller nicht finden, was eine Anmeldung oder Integration in die Domain unmöglich machen würde. Dafür navigieren wir zur selben Stelle in Azure, wo wir auch die IP-Adresse von dc-1 auf statisch gesetzt haben. Diesmal klicken wir auf "DNS-Server", auf "Benutzerdefiniert", geben als DNS-Server die private-IP-Adresse von dc-1 ein und "Speichern".
 </p>
 <p>
 <img src="https://i.imgur.com/huSDx7I.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
-Abchließend starten wir die VM neu und betsätigen die Änderung des DNS-Einstellungen. Das Neustarten der Maschine wird in Azure erledigt. Zum Bestätigen des DNS-Servers loggen wir uns in client-1 ein und öffnen Powershell. Hier angekommen geben wir "ipconfig /all" ein und suchen nach "". Wenn rechts daneben die private-IP von dc-1 zu finden ist, dann ist alles nach Plan verlaufen.
+Abchließend starten wir die VM neu und bestätigen die Änderung des DNS-Einstellungen. Das Neustarten der Maschine wird in Azure erledigt. Zum Bestätigen des DNS-Servers loggen wir uns in client-1 ein und öffnen Powershell. Hier angekommen geben wir "ipconfig /all" ein und suchen nach "DNS-Server". Wenn rechts daneben die private-IP von dc-1 zu finden ist, dann ist alles nach Plan verlaufen.
 <p>
 <img src="https://i.imgur.com/Ub5Lusb.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
@@ -240,7 +240,7 @@ Abchließend starten wir die VM neu und betsätigen die Änderung des DNS-Einste
 </p>
 
 <p>
-Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzufügen, öffnen wir die Systemseinstellungen (rechtsklick auf Windowssymbol unten links und auf "System" drücken). Als nächstes auf "Rename this PC (advanced)", auf "Change..." und dann als "Member of" "Domain" anwählen und ihren Domainn-Namen eingeben (s. Bild). Die Rechner fragt als Reaktion nach einem Benutzer mit der Berechtigung diese Aktion auszuführen. Wir geben die Daten vom lieben Barack an (Ihrem Domain-Admin). Der Rechner fordert uns an ihn neu zu starten, damit die Änderungen in Effekt treten. Diesem Wunsch gehen wir nach.
+Endlich kommen wir zum Thema! Um diesen Rechner jetzt zu unserer Domain hinzuzufügen, öffnen wir die Systemseinstellungen (rechtsklick auf Windowssymbol unten links und auf "System" drücken). Als nächstes auf "Rename this PC (advanced)", auf "Change..." und dann als "Member of" "Domain" anwählen und ihren Domainn-Namen eingeben (s. Bild). Die Rechner fragt als Reaktion nach einem Benutzer mit der Berechtigung diese Aktion auszuführen. Wir geben die Daten vom lieben Barack an (Ihrem Domain-Admin). Der Rechner fordert uns an ihn neu zu starten, damit die Änderungen in Effekt treten. Diesem Wunsch gehen wir nach. gggggggggggggggggggggggggggggggggggggggggggggggggggggg
 <p>
 <img src="https://i.imgur.com/wNeyzNV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
