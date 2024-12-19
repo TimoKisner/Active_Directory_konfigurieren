@@ -107,7 +107,7 @@ Starten Sie zur Absicherung die Virtuelle Maschine neu um die Änderung effektiv
 <!-- XXX -->
 <!-- XXX -->
 <!-- XXX -->
-<h2>Istallation Active Directory Domain Servives</h2>
+<h2>Installation Active Directory Domain Servives</h2>
 
 <p>
 Fortfahren tun wir innerhalb der virtuellen Maschine. Benutze Remotedesktopverbindungen um dich in dc-1 einzuloggen und, falls es nicht schon automatisch geschieht, öffne "Server Manager". Klicke auf "Add roles and features". Hier haben Sie eine Auflistung, worauf sie bei jedem der folgenden Einrichtungsfenster achten sollen:
@@ -126,7 +126,7 @@ Fortfahren tun wir innerhalb der virtuellen Maschine. Benutze Remotedesktopverbi
 </p>
 
 <p>
-Sobald die Installation abgeschlossen ist, drücken wir auf "close". Jetzt machen den Rechner, dc-1, zu einem tatsächlichen DC, Domain Controller. Hierzu müssen wir erneut in den Server Manager. Oben rechts befindet sich eine Fahne. Diese anklicken und auf "Promote this server to a domain controller" drücken. Anschließend öffnet sich ein Fenster zur Einrichtung der Domäne über die der Controller verwalten soll. Wir erschaffen eine komplett neue. Dafür fügen wir einen neuen "forest" hinzu. DAS ist ein forest: djfbajusbvjaufsd.........(). Er kann heißen wie Sie wünschen. Ich nenne meinen "uga.buga". Dieser "Root Domain name" ist nichts anderes als: jdabjvabfsdvba.......(). Anschließend müssen Sie ein ein Passwort eingeben zur Wiederherstellung der Domain (diesen werden wir nicht brauchen). Anschließend auf "next" drücken bis wir zum "Prerequisites Check"-Fenster kommen. Nachdem der Rechner erfolgreich geprüft wurde auf "Install" klicken. Im Anschluss der Installation wird Ihre Verbindung mit dem Rechner getrennt, weil dieser sich neu startet um die installierten Änderungen effektiv zu machen.
+Sobald die Installation abgeschlossen ist, drücken wir auf "close". Jetzt machen wir den Rechner, dc-1, zu einem tatsächlichen DC, Domain Controller. Hierzu müssen wir erneut in den Server Manager. Oben rechts befindet sich eine Fahne. Diese anklicken und auf "Promote this server to a domain controller" drücken. Anschließend öffnet sich ein Fenster zur Einrichtung der Domäne über die der Controller verwalten soll. Wir erschaffen eine komplett neue. Dafür fügen wir einen neuen "forest" hinzu. Ein Forest in Active Directory ist die oberste organisatorische Ebene, die alle Domänen und ihre Ressourcen (Benutzer, Rechner, etc) unter sich zusammenfasst. Es stellt eine gemeinsame Sicherheits- und Verwaltungsstruktur für diese Domänen bereit. Unser Domain Controller erstellt den Forest und die Domain. Ihr Forest kann heißen wie Sie wünschen. Ich nenne meinen "uga.buga". Dieser "Root domain name" ist nichts anderes als der Name der Domain, die innerhalb unseres Forests erstellt wird, und dient als Grundlage für die gesamte Active Directory-Umgebung. Er definiert die primäre Identität des Forests und legt den Namensraum fest, unter dem alle weiteren Domänen und Ressourcen organisiert werden. Anschließend müssen Sie ein ein Passwort eingeben zur Wiederherstellung der Domain (diesen werden wir nicht brauchen). Anschließend auf "next" drücken bis wir zum "Prerequisites Check"-Fenster kommen. Nachdem der Rechner erfolgreich geprüft wurde, auf "Install" klicken. Im Anschluss der Installation wird Ihre Verbindung mit dem Rechner getrennt, weil dieser sich neu startet um die installierten Änderungen effektiv zu machen.
 </p>
 <p>
 <img src="https://i.imgur.com/9qqRPJG.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -137,7 +137,7 @@ Sobald die Installation abgeschlossen ist, drücken wir auf "close". Jetzt mache
 <br />
 
 <p>
-Von nun an, wenn wir uns einloggen wollen in unsere Rechner (sowohl unser gerade erstellter Domain Controller als auch zukünftige Rechner, die wir der Domain hinzufügen), verwenden wir den Kontext der Domain beim einloggen. Anstatt in Remotedesktopverbindungen den einfachen Benutzernamen des Accounts mit dem wir uns einloggen wollen einzugeben, geben wir ihn im folgendem Format ein: "[domain]\Benutzername". In meinem Beispiel heißt meine Domain uge.buga und der Benutzername lautet test_user, also gebe ich "uga.buga\test_user" ein. Das Passwort ist das gleiche wie zuvor.
+Von nun an, wenn wir uns einloggen wollen in Virtuellen Maschinen (sowohl unser gerade erstellter Domain Controller als auch zukünftige Rechner, die wir der Domain hinzugefügt haben), verwenden wir den Kontext der Domain beim einloggen. Anstatt in Remotedesktopverbindungen den einfachen Benutzernamen des Accounts, mit dem wir uns einloggen wollen, einzugeben, geben wir ihn im folgendem Format ein: "[domain]\Benutzername". In meinem Beispiel heißt meine Domain uge.buga und der Benutzername lautet test_user, also gebe ich "uga.buga\test_user" ein. Das Passwort ist das gleiche wie zuvor.
 </p>
 <p>
 <img src="https://i.imgur.com/pRaXgY1.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -149,7 +149,7 @@ Von nun an, wenn wir uns einloggen wollen in unsere Rechner (sowohl unser gerade
 <h2>Domain-Admin</h2>
 
 <p>
-Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unserer Domain. Genauer werden wir zunächst einen Benutzer mit Adminstartor-Berechtigungen über die Domain erstellen, kurz einen Domain-Admin. Öffnen tun wir eine Anwendung namens "Active Directory Users and Computers". Hier können wir genannte Instanzen erstellen. Zur besseren Übersicht erstellen wir eine "Organizational Unit" namens "_ADMINS". Eine "Organizational Unit" (OU) bezeichnet, für unsere Zwecke, nichts anderes als einen Ordner mit bestimmten Attributen. Der Name kann sein was auch immer Ihr Herz begehrt, da wir aber in diesem Ordner vor haben all unsere Admin-Benutzer zu verwalten, nenne ich ihn dementsprechend "_ADMINS" (das "_" dient zur Sortierung: ist wegen alphabetischer Anordnung der Ordner als erstes angezeigt). Rechtklicken Sie auf ihre Domain, dann auf "New" und dann auf "Organizational Units". 
+Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unserer Domain. Genauer werden wir zunächst einen Benutzer mit Adminstartor-Berechtigungen über die Domain erstellen, kurz einen Domain-Admin. Öffnen tun wir eine Anwendung namens "Active Directory Users and Computers". Hier können wir genannte Instanzen erstellen. Zur besseren Übersicht erstellen wir eine "Organizational Unit" namens "_ADMINS". Eine "Organizational Unit" (OU) bezeichnet, für unsere Zwecke, nichts anderes als einen Ordner mit bestimmten Attributen. Der Name kann sein was auch immer Ihr Herz begehrt, da wir aber in diesem Ordner vor haben all unsere Admin-Benutzer zu verwalten, nenne ich ihn dementsprechend "_ADMINS" (das "_" dient zur Sortierung: durch alphabetischer Anordnung wird der Ordner als erstes angezeigt). Rechtklicken Sie auf ihre Domain, dann auf "New" und dann auf "Organizational Units". 
 </p>
 <p>
 <img src="https://i.imgur.com/LztRXEj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -162,14 +162,14 @@ Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unse
 </p>
 
 <p>
-Während wir schon dabei sind, erstellen wir zwei weitere OUs. Nämlich "_CLIENTS" und "_EMPLOYEES". Beide benutzen wir später im Verlauf der Einrichtung. Achte bei der OU "_EMPLOYEES" es genau so zu schreiben, da wir später mit einem script arbeiten, um uns mehrere zufällig generierte Benutzer zu erstellen (oder ändere das script, dass es auf den Namen deiner OU zutrifft). Fürs erste spielen diese zwei OUs aber keine Rolle. 
+Während wir schon dabei sind, erstellen wir zwei weitere OUs. Nämlich "_CLIENTS" und "_EMPLOYEES". Beide benutzen wir später im Verlauf der Einrichtung. Achte bei der OU "_EMPLOYEES", dass es genau so geschrieben ist, da wir später mit einem script arbeiten um uns mehrere zufällig generierte Benutzer zu erstellen (oder ändere das script, dass es auf den Namen deiner OU zutrifft). Fürs erste spielen diese zwei OUs aber keine Rolle. 
 </p>
 <p>
 <img src="https://i.imgur.com/1FMxHMj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
-Zurück zur Organizational Unit "_ADMINS". Innerhalb dieser erstellen wir einen "User". KLicke auf "_ADMINS", dann rechtklicke die Ansicht rechts und drücke "New", dann "User". Alle relevanten Informationen ausfüllen, den logon-Namen sich merken und auf "Next" drücken. Diesen verwenden wir zum einloggen in den Account. Es ist der Benutzername des Benutzer-Accounts, den wir eingeben in Remotedesktopverbindung. Das selbe gilt für das Passwort, welches Sie im Anschluss eingeben. !Achtung: lese dir die Checkboxen durch beim eingeben des Passwortes und setzen/entfernen sie Häckchen nach Ihrem Belieben. Da dies lediglich eine Anleitung ist und ich meine virtuelle Maschine lösche, habe ich folgende Häckchen gesetzt (s. Bild).
+Zurück zur Organizational Unit "_ADMINS". Innerhalb dieser erstellen wir einen "User". Klicke auf "_ADMINS", dann rechtklicke die Ansicht rechts und drücke "New", dann "User". Alle relevanten Informationen ausfüllen, den logon-Namen sich merken und auf "Next" drücken. Diesen verwenden wir zum einloggen in den Account. Es ist der Benutzername des Benutzer-Accounts, den wir eingeben in Remotedesktopverbindung. Das selbe gilt für das Passwort, welches Sie im Anschluss eingeben. !Achtung: lesen Sie sich die Checkboxen durch beim eingeben des Passwortes und setzen/entfernen sie Häckchen nach Ihrem Belieben. Da dies lediglich eine Anleitung ist und ich meine virtuelle Maschine am Ende lösche, habe ich folgende Häckchen gesetzt (s. Bild).
 </p>
 <p>
 Mein logon-Name/Benutzername dieses Admin Accounts lautet "admin_barack". 
@@ -195,7 +195,7 @@ Zuletzt müssen wir "admin_barack" auch wirklich zum Admin machen, denn nur weil
 </p>
 
 <p>
-Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins angenommen wird, klicken auf "Apply" und dann auf "OK". Nun besitzt Barack die Berechtigungen eines Admins innerhalb der Domain uga.buga. Logge dich neu ein als "[domain-name]\[admin_user]". Von nun an loggen wir uns in dc-1 nur noch mit unserem Adminkonto ein.
+Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins angenommen wurde, klicken auf "Apply" und dann auf "OK". Nun besitzt Barack die Berechtigungen eines Admins innerhalb der Domain uga.buga. Logge dich neu ein als "[domain-name]\[admin_user]". Von nun an loggen wir uns in dc-1 nur noch mit unserem Adminkonto ein.
 </p>
 <p>
 <img src="https://i.imgur.com/lKR1NCp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -212,7 +212,7 @@ Abschließend bestätigen wir, dass Barack in den Rängen der Domain Admins ange
 <!-- XXX -->
 <!-- XXX -->
 <h2>Rechner zur Domain hinzufügen</h2>
-
+ggggggggggggggggg
 <p>
 Was benötigt man um einen Rechner, gedacht für Benutzer, einer Domain hinuzufügen? Richtig, einen Rechner! Wir erschaffen uns eine weitere Virtuelle Maschine in Azure, die, bezogen auf die Einstellungen (zugeordnete Ressourcengruppe, Virtuelles Netzwerk, etc.), gleichgesetzt ist mit dc-1. So befinden sie sich in der selben Umgebung. Der einzige Unterschied ist folgender: an der Stelle von Windows Server 2022 benutzen wir Windows 10 Pro als Image. Als Namen für die Virtuelle Maschine suggeriere ich "client-1". Falls Sie sich noch erinnern, haben wir eine Organizational Unit namens "_CLIENTS" angelegt, mit der Intention darin unsere Rechner innerhalb der Domain zu verwalten. Der Benutzername und das Passwort des Kontos steht Ihnen frei. Meiner lautet "original_user".
 </p>
