@@ -149,7 +149,7 @@ Von nun an, wenn wir uns einloggen wollen in virtuellen Maschinen (sowohl unser 
 <h2>Domain-Admin</h2>
 
 <p>
-Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unserer Domain. Genauer werden wir zunächst einen Benutzer mit Adminstartor-Berechtigungen über die Domain erstellen, kurz einen Domain-Admin. Öffnen tun wir eine Anwendung namens "Active Directory Users and Computers". Hier können wir genannte Instanzen erstellen. Zur besseren Übersicht erstellen wir eine "Organizational Unit" namens "_ADMINS". Eine "Organizational Unit" (OU) bezeichnet, für unsere Zwecke, nichts anderes als einen Ordner mit bestimmten Attributen. Der Name kann sein was auch immer Ihr Herz begehrt, da wir aber in diesem Ordner vor haben all unsere Admin-Benutzer zu verwalten, nenne ich ihn dementsprechend "_ADMINS" (das "_" dient zur Sortierung: durch alphabetischer Anordnung wird der Ordner als erstes angezeigt). Rechtklicken Sie auf ihre Domain, dann auf "New" und dann auf "Organizational Units". 
+Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unserer Domain. Genauer werden wir zunächst einen Benutzer mit Administrator-Berechtigungen über die Domain erstellen, kurz einen Domain-Admin. Öffnen tun wir eine Anwendung namens "Active Directory Users and Computers". Hier können wir genannte Instanzen erstellen. Zur besseren Übersicht erstellen wir eine "Organizational Unit" namens "_ADMINS". Eine "Organizational Unit" (OU) bezeichnet, für unsere Zwecke, nichts anderes als einen Ordner mit bestimmten Attributen. Der Name kann sein was auch immer Ihr Herz begehrt, da wir aber in diesem Ordner vorhaben all unsere Admin-Benutzer zu verwalten, nenne ich ihn dementsprechend "_ADMINS" (das "_" dient zur Sortierung: durch alphabetischer Anordnung wird der Ordner als erstes angezeigt). Rechtsklicken Sie auf ihre Domain, dann auf "New" und dann auf "Organizational Units".
 </p>
 <p>
 <img src="https://i.imgur.com/LztRXEj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -162,14 +162,14 @@ Der nächste Schritt bezieht sich auf das Erstellen von Instanzen innerhalb unse
 </p>
 
 <p>
-Während wir schon dabei sind, erstellen wir zwei weitere OUs. Nämlich "_CLIENTS" und "_EMPLOYEES". Beide benutzen wir später im Verlauf der Einrichtung. Achte bei der OU "_EMPLOYEES", dass es genau so geschrieben ist, da wir später mit einem script arbeiten um uns mehrere zufällig generierte Benutzer zu erstellen (oder ändere das script, dass es auf den Namen deiner OU zutrifft). Fürs erste spielen diese zwei OUs aber keine Rolle. 
+Während wir schon dabei sind, erstellen wir zwei weitere OUs. Nämlich "_CLIENTS" und "_EMPLOYEES". Beide benutzen wir später im Verlauf der Einrichtung. Achte bei der OU "_EMPLOYEES", dass es genau so geschrieben ist, da wir später mit einem Script arbeiten, um uns mehrere zufällig generierte Benutzer zu erstellen (oder ändere das Script, dass es auf den Namen deiner OU zutrifft). Fürs erste spielen diese zwei OUs aber keine Rolle. 
 </p>
 <p>
 <img src="https://i.imgur.com/1FMxHMj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <p>
-Zurück zur Organizational Unit "_ADMINS". Innerhalb dieser erstellen wir einen "User". Klicke auf "_ADMINS", dann rechtklicke die Ansicht rechts und drücke "New", dann "User". Alle relevanten Informationen ausfüllen, den logon-Namen sich merken und auf "Next" drücken. Diesen verwenden wir zum einloggen in den Account. Es ist der Benutzername des Benutzer-Accounts, den wir eingeben in Remotedesktopverbindung. Das selbe gilt für das Passwort, welches Sie im Anschluss eingeben. !Achtung: lesen Sie sich die Checkboxen durch beim eingeben des Passwortes und setzen/entfernen sie Häckchen nach Ihrem Belieben. Da dies lediglich eine Anleitung ist und ich meine virtuelle Maschine am Ende lösche, habe ich folgende Häckchen gesetzt (s. Bild).
+Zurück zur Organizational Unit "_ADMINS". Innerhalb dieser erstellen wir einen "User". Klicke auf "_ADMINS", dann Rechtsklicke die Ansicht rechts und drücke "New", dann "User". Alle relevanten Informationen ausfüllen, den logon-Namen sich merken und auf "Next" drücken. Diesen verwenden wir zum Einloggen in den Account. Es ist der Benutzername des Benutzer-Accounts, den wir eingeben in Remotedesktopverbindung. Dasselbe gilt für das Passwort, welches Sie im Anschluss eingeben. !Achtung: lesen Sie sich die Checkboxen durch beim Eingeben des Passwortes und setzen/entfernen sie Häkchen nach Ihrem Belieben. Da dies lediglich eine Anleitung ist und ich meine virtuelle Maschine am Ende lösche, habe ich folgende Häkchen gesetzt (s. Bild).
 </p>
 <p>
 Mein logon-Name/Benutzername dieses Admin Accounts lautet "admin_barack". 
@@ -185,7 +185,7 @@ Mein logon-Name/Benutzername dieses Admin Accounts lautet "admin_barack".
 </p>
 
 <p>
-Zuletzt müssen wir "admin_barack" auch wirklich zum Admin machen, denn nur weil er sich in der von uns erstellten "_ADMINS" OU befindet, macht ihn das nicht automatisch zu einem Admin. Um das zu realisieren müssen wir ihn der Sicherheitsgruppe der Domain-Admins hinzufügen. Öffne "_ADMINS", rechtklicke auf Barack und drücke auf "Properties". Navigiere zu "Member Of", drücke "Add" und schreibe "Domain Admins" in die Box. Sicherheitshalber drücken Sie auf "Check Names" und erst dann auf "OK" (folge den Pfeilen auf dem Bild).
+Zuletzt müssen wir "admin_barack" auch wirklich zum Admin machen, denn nur weil er sich in der von uns erstellten "_ADMINS" OU befindet, macht ihn das nicht automatisch zu einem Admin. Um das zu realisieren, müssen wir ihn der Sicherheitsgruppe der Domain-Admins hinzufügen. Öffne "_ADMINS", Rechtsklicke auf Barack und drücke auf "Properties". Navigiere zu "Member Of", drücke "Add" und schreibe "Domain Admins" in die Box. Sicherheitshalber drücken Sie auf "Check Names" und erst dann auf "OK" (folge den Pfeilen auf dem Bild).
 </p>
 <p>
 <img src="https://i.imgur.com/2quI4fE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
