@@ -325,5 +325,8 @@ Um unser Vorhaben möglich zu machen loggen wir uns zunächst mit unserem Admina
 <h2>Abschließende Worte</h2>
 
 <p>
-Zusammenfassend Infrastruktur gelegt: Software Installiert; Admin, Benutzer und Rechner erstellt/hinzugefügt. Weitere Mögliche Anlaufstellen für die einrichtung falls interesse besteht.
+Im Rahmen dieses Projekts haben wir eine grundlegende Active Directory-Umgebung eingerichtet, bestehend aus zwei virtuellen Maschinen: einem Domain Controller und einem Client, der erfolgreich in die Domain integriert wurde. Neben der manuellen Erstellung eines Administratorkontos haben wir mithilfe eines PowerShell-Skripts zahlreiche Benutzerkonten effizient der Domain hinzugefügt. Diese grundlegende Einrichtung bildet die Basis für viele weitere Konfigurationsmöglichkeiten, wie etwa das Erstellen von Gruppenrichtlinien zur zentralen Verwaltung von Sicherheits- und Benutzerrechten, das Implementieren von weiteren Organisational Units (OU) zur Strukturierung von Ressourcen oder die Integration weiterer Dienste wie DHCP oder Zertifikatsdienste. Solche Erweiterungen ermöglichen eine optimierte Verwaltung und Skalierung der Umgebung, um sie individuell an die Anforderungen eines Netzwerks und dem Vorhaben anzupassen.
+</p>
+<p>
+Viel Spaß beim weiteren Einrichten ihrer Active Directory-Umgebung!
 </p>
