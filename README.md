@@ -261,7 +261,7 @@ Et voilà! Wir haben einen Rechner erfolgreich unserer Domain hinzugefügt. Zeit
 <h2>Domain-Benutzerkontos</h2>
 
 <p>
-Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Adminaccount erstellt haben. Hingegen des Adminaccounts erstellen wir unsere normalen, nicht-adminstrativen Benutzerkontos in der "_EMPLOYEES" Organizational Unit. Angesichts der Verwendung von Active Directory in der echtel Welt, sind diese Art von Benutzerkontos oft die der Mitarbeiter des Unternehmens, welche Besitz über die Domain hat. Dementsprechend ändern wir auch nichts an den Eigenschaten ("Properties") der Benutzerkonten innerhalb dieser Organizational Unit. Mein Beispiel eines nicht-admistrativen Benutzeraccounts taufe ich "hilli_billi". 
+Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Adminaccount erstellt haben. Hingegen des Adminaccounts erstellen wir unsere normalen, nicht-administrativen Benutzerkontos in der "_EMPLOYEES" Organizational Unit. Angesichts der Verwendung von Active Directory in der echten Welt, sind diese Art von Benutzerkontos oft die der Mitarbeiter des Unternehmens, welches Besitz über die Domain hat. Dementsprechend ändern wir auch nichts an den Eigenschaften ("Properties") der Benutzerkonten innerhalb dieser Organizational Unit. Mein Beispiel eines nicht-administrativen Benutzeraccounts taufe ich "hilli_billi".
 </p>
 <p>
 <img src="https://i.imgur.com/hv7U8aF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -271,7 +271,7 @@ Tatsächlich haben wir diesen Schritt schon getan. Nämlich als wir unser Admina
 </p>
 
 <p>
-Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnis und die Möglichkit für Experiemente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein script[LINK EMBEDDED, machen] in Powershell ISE laufen. Wichtig, öffne Powershell ISE in dc-1 als Adminstrator (rechtklick auf Powershell ISE und drücke auf "Run as adminstrator"). Der Unterschied zu Powershell? PowerShell ist eine Befehlszeilenumgebung und Skriptsprache, mit der Befehle direkt ausgeführt und Aufgaben automatisiert werden können. PowerShell ISE (Integrated Scripting Environment) hingegen ist eine grafische Benutzeroberfläche, die speziell für das Schreiben, Bearbeiten und Testen von PowerShell-Skripten entwickelt wurde, um komplexere Aufgaben einfacher umzusetzen. Erstelle ein neues Fenster für das schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst.
+Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprodukt ist nicht ausgelegt auf eine Verwendung in der realen Welt, sondern dient lediglich dem Erlangen des Grundverständnisses und die Möglichkeit für Experimente in Bezug auf Active Directory als Verzeichnisdienst. Demnach wäre es nützlich mehrere Benutzerkonten für Mitarbeiter anzulegen, aber einen nach dem anderen hinzuzufügen ist mühselig und zeitintensiv. Aus diesem Grund lassen wir ein Script[LINK EMBEDDED, machen] in PowerShell ISE laufen. Wichtig, öffne PowerShell ISE in dc-1 als Administrator (Rechtsklick auf PowerShell ISE und drücke auf "Run as adminstrator"). Der Unterschied zu PowerShell? PowerShell ist eine Befehlszeilenumgebung und Skriptsprache, mit der Befehle direkt ausgeführt und Aufgaben automatisiert werden können. PowerShell ISE (Integrated Scripting Environment) hingegen ist eine grafische Benutzeroberfläche, die speziell für das Schreiben, Bearbeiten und Testen von PowerShell-Skripten entwickelt wurde, um komplexere Aufgaben einfacher umzusetzen. Erstelle ein neues Fenster für das Schreiben von Programmen und Scripten, indem du oben links auf das leere, weiße Blatt mit gelben Sternchen klickst. ggggggggggggggggggggggggggggggggggggggggggggggggg
 </p>
 <p>
 <img src="https://i.imgur.com/W2wobF9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -279,9 +279,9 @@ Gegenwärtig haben wir uns eine Testumgebung gebaut. Unser jetziges Zwischenprod
 <p>
 <img src="https://i.imgur.com/Tfj3m2M.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<p>
 
-Kopiere das Script und füge es ein. Bevor du auf das script ausführst empfehle ich dir bei Bedarf folgende Variablen am script zu ändern: Anzahl der zu generierenden Benutzer (der Standardwert beträgt 10.000!!); das Password der Benutzer (wird für alle gleich sein) und, falls du deine Organizational Unit für Mitarbeiter nicht "_EMPLOYEES" genannt hast, den Weg der Erstellung.
+<p>
+Kopiere das Script und füge es ein. Bevor du das Script ausführst, empfehle ich dir bei Bedarf folgende Variablen im Script zu ändern: Anzahl der zu generierenden Benutzer (der Standardwert beträgt 10.000!!!), das Password der Benutzer (wird für alle gleich sein) und, falls du deine Organizational Unit für Mitarbeiter nicht "_EMPLOYEES" genannt hast, den Weg der Erstellung.
 </p>
 <p>
 <img src="https://i.imgur.com/TWBmtCA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -291,7 +291,7 @@ Kopiere das Script und füge es ein. Bevor du auf das script ausführst empfehle
 </p>
 
 <p>
-Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe die Anzahl der Benutzerkonten auf 100 gesetzt und das Password beim Satndard-Password belassen. Im Anschluss überprüfen wir in Active Directory Users and Computers, ob die Benutzerkonten tatsächlich angelegt wurden. Schließe Powershell ISE und rücke vor zur nächsten Station.
+Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe die Anzahl der Benutzerkonten auf 100 gesetzt und das Password beim Standard-Password belassen. Im Anschluss überprüfen wir in Active Directory Users and Computers, ob die Benutzerkonten tatsächlich angelegt wurden. Schließe PowerShell ISE und rücke vor zur nächsten Station.
 </p>
 <p>
 <img src="https://i.imgur.com/Mwaw5cV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -303,7 +303,7 @@ Zum Ausführen des Scripts drücken wir oben den grünen Play-Button. Ich habe d
 <h2>Zugriff für nicht-adminstrative Domain-Benutzerkontos</h2>
 
 <p>
-Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadminstrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-adminstrative Benutzerkontos noch nicht genehmigt haben. Versucht man es mit einem zufälligen Mitarbeiteraccount ("fiko.fakuh"), erscheint folgendes Error-Fenster (s. Bild). Der Domain Controller bestätigt, dass ein Benutzerkonto namens "fiko.fakuh" existiert, Client-1 aber das genannte Vorhaben nicht genehmigt.
+Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für den Systemadministrator und einen Rechner für Mitarbeiter. Aber beim Versuch uns mit einem zufällig gewählten Mitarbeiteraccount in client-1 anzumelden, scheitert es. Das liegt daran, dass wir den Zugang zu client-1 für nicht-administrative Benutzerkontos noch nicht genehmigt haben. Versucht man es mit einem zufälligen Mitarbeiteraccount ("fiko.fakuh"), erscheint folgendes Error-Fenster (s. Bild). Der Domain Controller bestätigt, dass ein Benutzerkonto namens "fiko.fakuh" existiert, Client-1 aber das genannte Vorhaben nicht genehmigt.
 <p>
 <img src="https://i.imgur.com/HeAtYGV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
@@ -312,7 +312,7 @@ Momentan haben wir mehrere Benutzerkonten für Mitarbeiter, ein Adminkonto für 
 </p>
 
 <p>
-Um unser Vorhaben möglich zu machen loggen wir uns zunächst mit unserem Adminaccount Barack in client-1 ein. In client-1 angekommen öffnen wir die Systemsteuerungen (rechtklick unten links auf das Windowssymbol und wähle "System" aus). Anschließend navigieren wir zu "Remote Desktop", klicken auf "Select users that can remotely access this PC", drücken auf "Add" und fügen unsere Benutzer hinzu. Anstatt einen einzelnen Benutzer einzugeben und diesen Prozess für jeden einzelnen Account zu wiederholen, schreiben wir "Domain Users" in die Box. Beim Erstellen von Usern in Active Directory Users and Computers werden diese automatisch als Mitglieder von "Domain Users" zugeordnet. Demzufolge sind all unsere Mitarbeiteraccounts Mitglied und alle erhalten Zugriff auf client-1.
+Um unser Vorhaben möglich zu machen, loggen wir uns zunächst mit unserem Adminaccount Barack in client-1 ein. In client-1 angekommen öffnen wir die Systemsteuerungen (Rechtsklick unten links auf das Windowssymbol und wähle "System" aus). Anschließend navigieren wir zu "Remote Desktop", klicken auf "Select users that can remotely access this PC", drücken auf "Add" und fügen unsere Benutzer hinzu. Anstatt einen einzelnen Benutzer einzugeben und diesen Prozess für jeden einzelnen Account zu wiederholen, schreiben wir "Domain Users" in die Box. Beim Erstellen von Usern in Active Directory Users and Computers werden diese automatisch als Mitglieder von "Domain Users" zugeordnet. Demzufolge sind all unsere Mitarbeiteraccounts Mitglied und alle erhalten Zugriff auf client-1.
 </p>
 <p>
 <img src="https://i.imgur.com/X5v2q0G.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -324,7 +324,7 @@ Um unser Vorhaben möglich zu machen loggen wir uns zunächst mit unserem Admina
 <h2>Abschließende Worte</h2>
 
 <p>
-Im Rahmen dieses Projekts haben wir eine grundlegende Active Directory-Umgebung eingerichtet, bestehend aus zwei virtuellen Maschinen: einem Domain Controller und einem Client, der erfolgreich in die Domain integriert wurde. Neben der manuellen Erstellung eines Administratorkontos haben wir mithilfe eines PowerShell-Skripts zahlreiche Benutzerkonten effizient der Domain hinzugefügt. Diese grundlegende Einrichtung bildet die Basis für viele weitere Konfigurationsmöglichkeiten, wie etwa das Erstellen von Gruppenrichtlinien zur zentralen Verwaltung von Sicherheits- und Benutzerrechten, das Implementieren von weiteren Organisational Units (OU) zur Strukturierung von Ressourcen oder die Integration weiterer Dienste wie DHCP oder Zertifikatsdienste. Solche Erweiterungen ermöglichen eine optimierte Verwaltung und Skalierung der Umgebung, um sie individuell an die Anforderungen eines Netzwerks und dem Vorhaben anzupassen.
+Im Rahmen dieses Projekts haben wir eine grundlegende Active Directory-Umgebung eingerichtet, bestehend aus: zwei virtuellen Maschinen, einem Domain-Controller und einem Client, der erfolgreich in die Domain integriert wurde. Neben der manuellen Erstellung eines Administratorkontos haben wir mithilfe eines PowerShell-Skripts zahlreiche Benutzerkonten effizient der Domain hinzugefügt. Diese grundlegende Einrichtung bildet die Basis für viele weitere Konfigurationsmöglichkeiten, wie etwa: das Erstellen von Gruppenrichtlinien zur zentralen Verwaltung von Sicherheits- und Benutzerrechten, das Implementieren von weiteren Organisational Units (OU) zur Strukturierung von Ressourcen oder die Integration weiterer Dienste wie DHCP oder Zertifikatsdienste. Solche Erweiterungen ermöglichen eine optimierte Verwaltung und Skalierung der Umgebung, um sie individuell an die Anforderungen eines Netzwerks und dem Vorhaben anzupassen.
 </p>
 <p>
 Viel Spaß beim weiteren Einrichten ihrer Active Directory-Umgebung!
